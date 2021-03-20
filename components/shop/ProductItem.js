@@ -4,7 +4,6 @@ import {
   Text,
   StyleSheet,
   Image,
-  Button,
   TouchableOpacity,
   TouchableNativeFeedback,
   Platform,
@@ -17,7 +16,7 @@ export default productItem = (props) => {
   }
   return (
     <View style={styles.products}>
-      <MyComponent onPress={props.onViewDetails} useForeground>
+      <MyComponent onPress={props.onSelect} useForeground>
         <View>
           <Image style={styles.image} source={{ uri: props.image }} />
           <View style={styles.detail}>
@@ -25,16 +24,7 @@ export default productItem = (props) => {
             <Text style={styles.price}>${props.price.toFixed(2)}</Text>
           </View>
           <View style={styles.actions}>
-            <Button
-              title="View Details"
-              onPress={props.onViewDetails}
-              color={Colors.primary}
-            />
-            <Button
-              title="To Cart"
-              onPress={props.onAddToCart}
-              color={Colors.primary}
-            />
+           {props.children}
           </View>
         </View>
       </MyComponent>
@@ -60,7 +50,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    marginVertical: 4,
+    marginVertical: 2,
     fontFamily: "open-sans-bold",
   },
   price: {
